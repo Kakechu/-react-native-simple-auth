@@ -1,23 +1,27 @@
-import { StyleSheet, View } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
-import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import React from 'react';
-import CustomFlatButton from '../ui/CustomFlatButton';
-import AuthenticationForm, { AuthCredentials } from './AuthenticationForm';
-import { Colors } from '../../constants/styles';
+import { StyleSheet, View } from "react-native";
+import { useNavigation } from "@react-navigation/native";
+import type { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import React from "react";
+import CustomFlatButton from "../ui/CustomFlatButton";
+import AuthenticationForm, { AuthCredentials } from "./AuthenticationForm";
+import { Colors } from "../../constants/styles";
 
 interface AuthenticationContentProps {
   isLoggedIn?: boolean;
+  onAuthentication: (credentials: { email: string; password: string }) => void;
 }
 
-const AuthenticationContent = ({ isLoggedIn, onAuthentication }: AuthenticationContentProps) => {
+const AuthenticationContent = ({
+  isLoggedIn,
+  onAuthentication,
+}: AuthenticationContentProps) => {
   const navigation = useNavigation<NativeStackNavigationProp<any>>();
 
   const authencationModeHandler = () => {
     if (isLoggedIn) {
-      navigation.replace('Signup');
+      navigation.replace("Signup");
     } else {
-      navigation.replace('Login');
+      navigation.replace("Login");
     }
   };
 
@@ -33,7 +37,7 @@ const AuthenticationContent = ({ isLoggedIn, onAuthentication }: AuthenticationC
       <AuthenticationForm isLoggedIn={!!isLoggedIn} onSubmit={submitHandler} />
       <View style={styles.button}>
         <CustomFlatButton onPress={authencationModeHandler}>
-          {isLoggedIn ? 'Create user' : 'Log in'}
+          {isLoggedIn ? "Create user" : "Log in"}
         </CustomFlatButton>
       </View>
     </View>

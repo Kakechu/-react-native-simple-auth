@@ -19,7 +19,23 @@ export const createNewUser = async (
   password: string
 ): Promise<AuthResponse> => {
   const response = await axios.post<AuthResponse>(
-    "httpss://identitytoolkit.googleapis.com/v1/accounts:signUp?key=" + API_KEY,
+    "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=" + API_KEY,
+    {
+      email: email,
+      password: password,
+      returnSecureToken: true,
+    }
+  );
+  return response.data;
+};
+
+export const login = async (
+  email: string,
+  password: string
+): Promise<AuthResponse> => {
+  const response = await axios.post<AuthResponse>(
+    "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=" +
+      API_KEY,
     {
       email: email,
       password: password,
