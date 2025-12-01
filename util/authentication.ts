@@ -1,7 +1,6 @@
 import axios from "axios";
 
-// Firebasen autentikointiavain - HUOM: TEE OMA.
-
+// Firebasen autentikointiavain - HUOM: TEE OMA, tämä Tuomon.
 const API_KEY = "";
 
 interface AuthResponse {
