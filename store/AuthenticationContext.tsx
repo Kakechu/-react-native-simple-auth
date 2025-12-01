@@ -25,4 +25,23 @@ const AuthenticationContextProvider = ({ children }: ProviderProps) => {
   const authenticate = (token: string) => {
     setAuthenticationToken(token);
   };
+
+  const logout = () => {
+    setAuthenticationToken(null);
+  };
+
+  const authenticationValues: AuthContextValue = {
+    token: authenticationToken,
+    isAuthenticated: !!authenticationToken,
+    authenticate,
+    logout
+  };
+
+  return (
+    <AuthenticationContext.Provider value={authenticationValues}>
+        {children}
+    </AuthenticationContext.Provider>
+  )
 };
+
+export defualt AuthenticationContextProvider;
