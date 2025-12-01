@@ -34,14 +34,14 @@ const AuthenticationContextProvider = ({ children }: ProviderProps) => {
     token: authenticationToken,
     isAuthenticated: !!authenticationToken,
     authenticate,
-    logout
+    logout,
   };
 
   return (
     <AuthenticationContext.Provider value={authenticationValues}>
-        {children}
+      {children}
     </AuthenticationContext.Provider>
-  )
+  );
 };
 
-export defualt AuthenticationContextProvider;
+export default AuthenticationContextProvider;
